@@ -1,215 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alexa Scaravilli - Resume</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #98e3e1; /* Light gray background */
-            color: #020305; /* Darker text for readability */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alexa's Weekly Workout Plan</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #72cfda, #846ee3);
+      color: #222;
+    }
 
-        /* Header Styles */
-        header {
-            background: #007bff; /* Primary color blue */
-            color: #fff;
-            padding: 2.5rem 0 1.5rem;
-            text-align: center;
-        }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-        header h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #2c3e50;
+    }
 
-        header p {
-            margin: 0.5rem 0;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
 
-        /* Main Content Styles */
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
 
-        /* Section Styles */
-        section {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #dee2e6; /* Light separator */
-        }
-        
-        section:last-child {
-            border-bottom: none; /* No line under the last section */
-        }
+    .day-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
 
-        h2 {
-            color: #007bff; /* Match header color */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            border-bottom: 3px solid #007bff; /* Accent line for section titles */
-            display: inline-block; /* Makes border-bottom only as wide as the text */
-        }
-        
-        /* Contact/Links Styling */
-        .contact-info {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    .day-card:hover {
+      transform: translateY(-5px);
+    }
 
-        .contact-info li {
-            margin: 0;
-        }
+    .day-card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      color: #e056fd;
+    }
 
-        /* Job/Education Entry Styles */
-        .entry h3 {
-            font-size: 1.3rem;
-            color: #343a40;
-            margin-bottom: 0.2rem;
-        }
+    .day-card ul {
+      list-style: none;
+      padding-left: 1rem;
+      margin: 0;
+    }
 
-        .entry h4 {
-            font-size: 1rem;
-            color: #6c757d; /* Muted color for details */
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-weight: normal;
-            font-style: italic;
-        }
-        
-        .entry p {
-            margin-bottom: 1rem;
-        }
-        
-        .entry ul {
-            list-style: disc;
-            margin-left: 20px;
-            margin-top: 0.5rem;
-        }
-        
-        /* Skills List Style */
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    .day-card ul li::before {
+      content: "✔️";
+      margin-right: 0.5rem;
+    }
 
-        .skills-list li {
-            background-color: #f8f9fa; /* Very light background for skill tags */
-            border: 1px solid #adb5bd;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            color: #495057;
-        }
+    .rest-day {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+    }
 
-        /* Link Styles */
-        a {
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #0056b3; /* Darker blue on hover */
-            text-decoration: underline;
-        }
-    </style>
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>[Your Full Name]</h1>
-        <p>[Your Professional Title/Tagline, e.g., Senior Software Engineer | Data Scientist]</p>
-        <ul class="contact-info">
-            <li>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></li>
-            <li>Phone: [Your Phone Number]</li>
-            <li>LinkedIn: <a href="[Your LinkedIn URL]" target="_blank">linkedin.com/in/yourprofile</a></li>
-            <li>GitHub/Portfolio: <a href="[Your GitHub URL]" target="_blank">github.com/yourusername</a></li>
-        </ul>
-    </header>
+  <header>
+    <h1>🏋️ Alexa's Weekly Workout Plan 🏃</h1>
+    <p>Week in the life... work out edition</p>
+  </header>
 
-    <main>
-        <section id="summary">
-            <h2>Professional Summary</h2>
-            <p>
-                [A brief, 3-4 sentence professional summary. Highlight your most relevant experience, core expertise, and career goals. Tailor this to the type of job you're seeking or the impression you want to make.]
-            </p>
-        </section>
+  <main>
+    <div class="day-card">
+      <h2>Monday – Cardio & Pilates</h2>
+      <ul>
+        <li>Walking – 15 minutes</li>
+        <li>Running – 3 miles </li>
+        <li>Pilates Class – 45 minutes</li>
+      </ul>
+    </div>
 
-        ---
+    <div class="day-card">
+      <h2>Tuesday – Lower Body</h2>
+      <ul>
+        <li>Squats – 3x15</li>
+        <li>RDLs – 3x12 each leg</li>
+        <li>Glute Bridges – 3x15</li>
+        <li>Elevated Split Squats – 3x10</li>
+      </ul>
+    </div>
 
-        <section id="experience">
-            <h2>Experience</h2>
-            
-            <div class="entry">
-                <h3>[Job Title]</h3>
-                <h4>[Company Name] | [City, State] | [Start Date] - [End Date/Present]</h4>
-                <ul>
-                    <li>[Accomplishment 1: Use strong action verbs. Quantify results whenever possible (e.g., increased efficiency by 15%).]</li>
-                    <li>[Accomplishment 2: Describe a key project or responsibility.]</li>
-                    <li>[Accomplishment 3: Detail an achievement demonstrating leadership or technical skill.]</li>
-                </ul>
-            </div>
-            
-            <div class="entry">
-                <h3>[Job Title]</h3>
-                <h4>[Company Name] | [City, State] | [Start Date] - [End Date]</h4>
-                <ul>
-                    <li>[Accomplishment 1]</li>
-                    <li>[Accomplishment 2]</li>
-                </ul>
-            </div>
-            
-        </section>
+    <div class="day-card">
+      <h2>Wednesday – Recovery</h2>
+      <div class="rest-day">🧘 Yoga Class!!</div>
+    </div>
 
-        ---
+    <div class="day-card">
+      <h2>Thursday – Cardio & Pilates</h2>
+      <ul>
+        <li>Walking – 15 minutes</li>
+        <li>Running – 3 miles </li>
+        <li>Pilates Class – 45 minutes</li>
+      </ul>
+      </ul>
+    </div>
 
-        <section id="education">
-            <h2>Education</h2>
-            
-            <div class="entry">
-                <h3>[Degree Name, e.g., Master of Science in Computer Science]</h3>
-                <h4>[University Name] | [City, State] | [Graduation Year]</h4>
-            </div>
-            
-            <div class="entry">
-                <h3>[Degree Name, e.g., Bachelor of Arts in Economics]</h3>
-                <h4>[University Name] | [City, State] | [Graduation Year]</h4>
-            </div>
+    <div class="day-card">
+      <h2>Friday – Upper Body</h2>
+      <ul>
+        <li> 2 Chest Workouts – 3x12</li>
+        <li> 2 Back Workouts – 3x15</li>
+        <li> 2 Arm Workouts – 3x15</li>
+      </ul>
+    </div>
 
-        </section>
+    <div class="day-card">
+      <h2>Saturday – Rest </h2>
+      <ul>
+        <li>Football Break!</li>
+      </ul>
+    </div>
 
-        ---
+    <div class="day-card">
+      <h2>Sunday – Light Cardio</h2>
+     <ul>
+        <li> 3 mile walk</li>
+    </div>
+  </main>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li><strong>Languages:</strong> Python, JavaScript, Java, SQL</li>
-                <li><strong>Frameworks:</strong> React, Node.js, Django, Spring Boot</li>
-                <li><strong>Tools & Platforms:</strong> AWS, Docker, Kubernetes, Git, Figma</li>
-                <li><strong>Concepts:</strong> Agile, Data Structures, RESTful APIs, Cloud Computing</li>
-            </ul>
-        </section>
-        
-    </main>
+  <footer>
+    💡 Tip of the Week: Muscles are cool!
+  </footer>
 </body>
 </html>
